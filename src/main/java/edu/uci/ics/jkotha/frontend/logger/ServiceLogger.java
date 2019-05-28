@@ -1,11 +1,10 @@
-package edu.uci.ics.UCInetID.frontend.logger;
+package edu.uci.ics.jkotha.frontend.logger;
+
+import edu.uci.ics.jkotha.frontend.FrontEnd;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.*;
-
-import static edu.uci.ics.UCInetID.frontend.FrontEnd.ANSI_GREEN;
-import static edu.uci.ics.UCInetID.frontend.FrontEnd.ANSI_RESET;
 
 public class ServiceLogger {
     public static final Logger LOGGER = Logger.getLogger(ServiceLogger.class.getName());
@@ -40,7 +39,7 @@ public class ServiceLogger {
             fileHandler.setLevel(Level.ALL);
             LOGGER.setLevel(Level.ALL);
 
-            LOGGER.config(ANSI_GREEN + "Logging initialized." + ANSI_RESET);
+            LOGGER.config(FrontEnd.ANSI_GREEN + "Logging initialized." + FrontEnd.ANSI_RESET);
         } catch (IOException e) {
             e.printStackTrace();
             throw new RuntimeException("Unable to initialize logging. Service terminating.");

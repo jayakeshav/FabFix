@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="LoginPage.css">
+    <script src = "../FunctionsRequired.js" type="text/javascript" defer="defer"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src = "login.js" type="text/javascript" defer="defer"></script>
+</head>
+<body onload="checkSession()">
+<section class="navigationBar" id="navBar">
+    <h1>FabFix</h1>
+    <p id="navtag">Online movie service.</p>
+    <nav>
+        <ul>
+            <li><a href="../index.html">home</a></li>
+            <li><a href="../Movies/SearchPage.html">Search</a></li>
+            <li><a href="#">Billing</a></li>
+        </ul>
+    </nav>
+</section>
+
+<div class="flex-container" id="parent">
+    <form id="login" action="#">
+        <header>fabfix login</header>
+        <div class="fields">
+            <input type="email" class="email" placeholder="enter email"><br>
+            <input type="password" class="password" placeholder="enter Password"><br>
+            <button type="submit" class="button btn">login</button><br><br>
+            <a href="RegisterPage.html">new user</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>

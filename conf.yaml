@@ -1,8 +1,8 @@
 serviceConfig:
   scheme: http://
-  hostName: 0.0.0.0
-  port:
-  path:
+  hostName: localhost
+  port: 2305
+  path: /
 
 loggerConfig:
   outputDir: ./logs/

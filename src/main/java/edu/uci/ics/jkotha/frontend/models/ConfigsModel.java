@@ -1,4 +1,4 @@
-package edu.uci.ics.UCInetID.frontend.models;
+package edu.uci.ics.jkotha.frontend.models;
 
 import java.util.Map;
 

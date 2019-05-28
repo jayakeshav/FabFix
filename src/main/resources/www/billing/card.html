@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CreditCard</title>
+    <link rel="stylesheet" href="Card.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src = "Card.js" type="text/javascript" defer="defer"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-25">
+            <div class="payment">
+                <form action="#">
+                    <h3>Card Details</h3>
+                    <label for="fname">First Name</label>
+                    <input type="text" id="fname" class="fname">
+                    <label for="lname">Last Name</label>
+                    <input type="text" id="lname" class="lname">
+                    <label for="ccnum">Credit card number</label>
+                    <input type="text" id="ccnum" class="cardnumber">
+                    <div>
+                        <label for="mon">Exp Month</label>
+                        <select class="mon" id ="mon">
+                            <option value="1">jan</option><option value="2">feb</option><option value="3">mar</option><option value="4">apr</option>
+                            <option value="5">may</option><option value="6">june</option><option value="7">july</option><option value="8">aug</option>
+                            <option value="9">sept</option><option value="10">oct</option><option value="11">nov</option><option value="12">dec</option>
+                        </select>
+                        <label for="expyear">Exp Year</label>
+                        <select class="expyear" id="expyear">
+                            <option value="2019">2019</option><option value="2020">2020</option>
+                            <option value="2021">2021</option><option value="2022">2022</option>
+                            <option value="2023">2023</option><option value="2024">2024</option>
+                        </select>
+                    </div>
+                    <label for="cvv">CVV</label>
+                    <input type="text" id="cvv" class="cvv">
+                    <button type="submit" class="btn">submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

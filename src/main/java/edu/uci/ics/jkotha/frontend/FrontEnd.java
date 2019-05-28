@@ -1,10 +1,10 @@
-package edu.uci.ics.UCInetID.frontend;
+package edu.uci.ics.jkotha.frontend;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
-import edu.uci.ics.UCInetID.frontend.configs.Configs;
-import edu.uci.ics.UCInetID.frontend.logger.ServiceLogger;
-import edu.uci.ics.UCInetID.frontend.models.ConfigsModel;
+import edu.uci.ics.jkotha.frontend.configs.Configs;
+import edu.uci.ics.jkotha.frontend.logger.ServiceLogger;
+import edu.uci.ics.jkotha.frontend.models.ConfigsModel;
 import org.glassfish.grizzly.http.server.CLStaticHttpHandler;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
@@ -145,7 +145,7 @@ public class FrontEnd {
             ServiceLogger.LOGGER.config("Building URI from configs...");
             URI uri = UriBuilder.fromUri(scheme + hostName + path).port(port).build();
             ServiceLogger.LOGGER.config("Final URI: " + uri.toString());
-            ResourceConfig rc = new ResourceConfig().packages("edu.uci.ics.kpmckeow.service.idm.resources");
+            ResourceConfig rc = new ResourceConfig().packages("edu.uci.ics.jkotha.frontend.resources");
             ServiceLogger.LOGGER.config("Set Jersey resources.");
             rc.register(JacksonFeature.class);
             ServiceLogger.LOGGER.config("Set Jackson as serializer.");

@@ -1,11 +1,9 @@
-package edu.uci.ics.UCInetID.frontend.configs;
+package edu.uci.ics.jkotha.frontend.configs;
 
 
-import edu.uci.ics.UCInetID.frontend.logger.ServiceLogger;
-import edu.uci.ics.UCInetID.frontend.models.ConfigsModel;
-
-import static edu.uci.ics.UCInetID.frontend.FrontEnd.ANSI_RED;
-import static edu.uci.ics.UCInetID.frontend.FrontEnd.ANSI_RESET;
+import edu.uci.ics.jkotha.frontend.logger.ServiceLogger;
+import edu.uci.ics.jkotha.frontend.models.ConfigsModel;
+import edu.uci.ics.jkotha.frontend.FrontEnd;
 
 public class Configs {
     private final int MIN_SERVICE_PORT = 1024;
@@ -50,13 +48,13 @@ public class Configs {
 
     public Configs(ConfigsModel cm) throws NullPointerException {
         if (cm == null) {
-            throw new NullPointerException(ANSI_RED + "Unable to create Configs from ConfigsModel." + ANSI_RESET);
+            throw new NullPointerException(FrontEnd.ANSI_RED + "Unable to create Configs from ConfigsModel." + FrontEnd.ANSI_RESET);
         } else {
             // Set service configs
             scheme = cm.getServiceConfig().get("scheme");
             if (scheme == null) {
                 scheme = DEFAULT_SCHEME;
-                System.err.println(ANSI_RED + "Scheme not found in configuration file. Using default." + ANSI_RESET);
+                System.err.println(FrontEnd.ANSI_RED + "Scheme not found in configuration file. Using default." + FrontEnd.ANSI_RESET);
             } else {
                 System.err.println("Scheme: " + scheme);
             }
@@ -64,7 +62,7 @@ public class Configs {
             hostName = cm.getServiceConfig().get("hostName");
             if (hostName == null) {
                 hostName = DEFAULT_HOSTNAME;
-                System.err.println(ANSI_RED + "Hostname not found in configuration file. Using default." + ANSI_RESET);
+                System.err.println(FrontEnd.ANSI_RED + "Hostname not found in configuration file. Using default." + FrontEnd.ANSI_RESET);
             } else {
                 System.err.println("Hostname: " + hostName);
             }
@@ -72,10 +70,10 @@ public class Configs {
             port = Integer.parseInt(cm.getServiceConfig().get("port"));
             if (port == 0) {
                 port = DEFAULT_PORT;
-                System.err.println(ANSI_RED + "Port not found in configuration file. Using default." + ANSI_RESET);
+                System.err.println(FrontEnd.ANSI_RED + "Port not found in configuration file. Using default." + FrontEnd.ANSI_RESET);
             } else if (port < MIN_SERVICE_PORT || port > MAX_SERVICE_PORT) {
                 port = DEFAULT_PORT;
-                System.err.println(ANSI_RED + "Port is not within valid range. Using default." + ANSI_RESET);
+                System.err.println(FrontEnd.ANSI_RED + "Port is not within valid range. Using default." + FrontEnd.ANSI_RESET);
             } else {
                 System.err.println("Port: " + port);
             }
@@ -83,7 +81,7 @@ public class Configs {
             path = cm.getServiceConfig().get("path");
             if (path == null) {
                 path = DEFAULT_PATH;
-                System.err.println(ANSI_RED + "Path not found in configuration file. Using default." + ANSI_RESET);
+                System.err.println(FrontEnd.ANSI_RED + "Path not found in configuration file. Using default." + FrontEnd.ANSI_RESET);
             } else {
                 System.err.println("Path: " + path);
             }
@@ -92,7 +90,7 @@ public class Configs {
             outputDir = cm.getLoggerConfig().get("outputDir");
             if (outputDir == null) {
                 outputDir = DEFAULT_OUTPUTDIR;
-                System.err.println(ANSI_RED + "Logging output directory not found in configuration file. Using default." + ANSI_RESET);
+                System.err.println(FrontEnd.ANSI_RED + "Logging output directory not found in configuration file. Using default." + FrontEnd.ANSI_RESET);
             } else {
                 System.err.println("Logging output directory: " + outputDir);
             }
@@ -100,7 +98,7 @@ public class Configs {
             outputFile = cm.getLoggerConfig().get("outputFile");
             if (outputFile == null) {
                 outputFile = DEFAULT_OUTPUTFILE;
-                System.err.println(ANSI_RED + "Logging output file not found in configuration file. Using default." + ANSI_RESET);
+                System.err.println(FrontEnd.ANSI_RED + "Logging output file not found in configuration file. Using default." + FrontEnd.ANSI_RESET);
             } else {
                 System.err.println("Logging output file: " + outputFile);
             }

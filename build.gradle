@@ -51,4 +51,4 @@ dependencies {
 }
 
 // Define the main class for the application
-mainClassName = 'edu.uci.ics.UCInetID.frontend.FrontEnd'
+mainClassName = 'edu.uci.ics.jkotha.frontend.FrontEnd'

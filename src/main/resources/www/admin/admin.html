@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>admin</title>
+    <script src = "../FunctionsRequired.js" type="text/javascript" defer="defer"></script>
+    <script src = "admin.js" type="text/javascript" defer="defer"></script>
+    <script src = "admin1.js" type="text/javascript" defer="defer"></script>
+    <script src = "admin2.js" type="text/javascript" defer="defer"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="admin.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<section class="navigationBar" id="navBar">
+    <h1>FabFix</h1>
+    <p id="navtag">Online movie service.</p>
+    <nav>
+        <ul>
+            <li><a href="../index.html">Home</a></li><!--            ../index.html-->
+            <li><a class="moviesNav" id="moviesNav">Movies</a></li>
+            <li><a class="starsNav" id="starsNav">Stars</a></li>
+            <li><a class="genresNav" id="genresNav">Genres</a></li>
+            <li><a class="customersNav" id="customersNav">customers</a></li>
+        </ul>
+    </nav>
+</section>
+<section id="content">
+    <div class="movies" id="movies" style="display: none">
+        <nav>
+            <ul class="x">
+                <li><a class="addMoviesNav" id="addMoviesNav">add movie</a></li>
+                <li><a class="deleteMoviesNav" id="deleteMoviesNav">delete movie</a></li>
+            </ul>
+        </nav>
+        <br>
+        <div class="addMovies" id="addMovies" style="display: none">
+            <h4>add movie</h4>
+            <form id="addMovieForm" class="addMovieForm" action="#">
+                <label>Title (required)</label><br>
+                <input type="text" class="title"/><br>
+                <label>Director (required)</label><br>
+                <input type="text" class="director"/><br>
+                <label>Year (required)</label><br>
+                <input type="number" class="year" min="1950" max="2020"/><br>
+                <label>genre(only 1 required)</label><br>
+                <input type="text" class="genre"/><br>
+                <label>Backdrop Path (optional)</label><br>
+                <input type="text" class="backdropPath"/><br>
+                <label>Poster Path (optional)</label><br>
+                <input type="text" class="posterPath"/><br>
+                <label>budget (optional)</label><br>
+                <input type="number" class="budget"/><br>
+                <label>revenue (optional)</label><br>
+                <input type="number" class="revenue"/><br>
+                <label>overview (optional)</label><br>
+                <input type="text" class="overview"/><br>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <div class="deleteMovies" id="deleteMovies" style="display: none">
+            <h4>delete movie</h4>
+            <form action="#" class="deleteMovieForm" id="deleteMovieForm">
+                <label>Title (required)</label><br>
+                <input type="text" class="deleteTitle"/><br>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div class="stars" id="stars" style="display: none">
+        <nav>
+            <ul class="x">
+                <li><a class="starSearchNav" id="starSearchNav">search star</a></li>
+                <li><a class="addStarNav" id="addStarNav">add star</a></li>
+                <li><a class="addStarToMovieNav" id="addStarToMovieNav">add star to a movie</a></li>
+            </ul>
+        </nav>
+        <br>
+        <div class="starSearch" id="starSearch" style="display: none">
+            <h4>starSearch</h4>
+            <div class="starSearchF" id="starSearchF">
+                <form class="starSearchForm" id="starSearchForm" action="#">
+                    <label>name</label>
+                    <input type="text" class="name"/>
+                    <label>movie title</label>
+                    <input type="text" class="movie"/>
+                    <label>birthYear</label>
+                    <input type="number" class="birthYear" min="1920" max="2020"/>
+                    <label>sort by</label>
+                    <select class="sortBy">
+                        <option value="name">name</option>
+                        <option value="birthYear">birthYear</option>
+                    </select>
+                    <label>order by</label>
+                    <select class="orderBy">
+                        <option value="desc">descending</option>
+                        <option value="asc">ascending</option>
+                    </select><br>
+                    <label>No of stars per page</label>
+                    <select class="numStars">
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                    </select>
+                    <br>
+                    <button type="submit">Search</button>
+                    <br>
+                </form>
+            </div>
+            <div class="starsDetails" id="starsDetails"></div>
+            <div class="starDetails" id="starDetails"></div>
+        </div>
+        <div class="addStar" id="addStar" style="display: none">
+            <h4>Add Star</h4>
+            <form class="starAddForm" id="starAddForm" action="#">
+                <label>Star Name</label><br>
+                <input type="text" class="addStarName"/><br>
+                <label>birthYear</label><br>
+                <input type="number" class="addBirthYear" min="1920" max="2020"/><br>
+                <button type="submit">add</button>
+            </form>
+        </div>
+        <div class="addStarToMovie" id="addStarToMovie" style="display: none">
+            <h4>add star to movie</h4>
+            <form class="starAddToMovieForm" id="starAddToMovieForm" action="#">
+                <label>movie Id</label><br>
+                <input type="text" class="movieId"/><br>
+                <label>star Id</label><br>
+                <input type="text" class="starIDtoMovie"/><br>
+                <button type="submit">add</button>
+            </form>
+        </div>
+    </div>
+    <div class="genres" id="genres" style="display: none">
+        <h4>add genre</h4>
+        <form class="genreAddForm" id="genreAddForm" action="#">
+            <label>genre</label><br>
+            <input type="text" class="genreAdd"/><br>
+            <button type="submit">add</button>
+        </form>
+    </div>
+    <div class="customers" id="customers" style="display: none">
+        <nav>
+            <ul class="x">
+                <li><a class="addCustomerNav" id="addCustomerNav">add new customer</a></li>
+                <li><a class="updateCustomerNav" id="updateCustomerNav">update customer</a></li>
+                <li><a class="viewCustomersNav" id="viewCustomersNav">view customer details</a></li>
+            </ul>
+        </nav>
+        <br>
+        <div class="addCustomer" id="addCustomer" style="display: none">
+            <h4>add Customer</h4>
+            <form action="#" class="addCustomerForm" id="addCustomerForm">
+                <label for="email">Email</label>
+                <input type="text" id="email" class="email"><br>
+                <label for="ccId">Credit Card number</label>
+                <input type="text" id="ccId" class="ccId"><br>
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" class="fname"><br>
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" class="lname"><br>
+                <label for="address">Address</label>
+                <input type="text" id="address" class="address"><br>
+                <button type="submit" class="btn">submit</button><br>
+            </form>
+        </div>
+        <div class="updateCustomer" id="updateCustomer" style="display: none">
+            <h4>update Customer</h4>
+            <form action="#" class="updateCustomerForm" id="updateCustomerForm">
+                <label for="nemail">Email</label>
+                <input type="text" id="nemail" class="nemail"><br>
+                <label for="nccId">Updated Credit Card number</label>
+                <input type="text" id="nccId" class="nccId"><br>
+                <label for="nfname">Updated First Name</label>
+                <input type="text" id="nfname" class="nfname"><br>
+                <label for="nlname">Updated Last Name</label>
+                <input type="text" id="nlname" class="nlname"><br>
+                <label for="naddress">Updated Address</label>
+                <input type="text" id="naddress" class="naddress"><br>
+                <button type="submit" class="btn">submit</button><br>
+            </form>
+        </div>
+        <div class="viewCustomer" id="viewCustomer" style="display: none">
+            <h4>view customer details</h4>
+            <form action="#" class="viewCustomerForm" id="viewCustomerForm">
+                <label for="uemail">Email</label>
+                <input type="text" id="uemail" class="uemail"><br>
+                <button type="submit" class="btn">submit</button><br>
+            </form>
+            <div class="viewDetails" id="viewDetails"></div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

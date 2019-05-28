@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MoviePage</title>
+    <script src = "../FunctionsRequired.js" type="text/javascript" defer="defer"></script>
+    <script src = "Movie.js" type="text/javascript" defer="defer"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="Movie.css" type="text/css" rel="stylesheet">
+</head>
+<body onload="checkLogin()">
+<section class="navigationBar" id="navBar">
+    <h1>FabFix</h1>
+    <p id="navtag">Online movie service.</p>
+    <nav>
+        <ul>
+            <li><a href="../index.html">HomePage</a></li>
+            <li><a href="../billing/cart.html">Cart</a></li>
+            <li><a onclick="logout()">logout</a></li>
+        </ul>
+    </nav>
+</section>
+<section class="movieDetailsSection" id="movieDetailsSection">
+    <h3 style="text-align: center;" id="movieTitle"></h3>
+    <div class="movieDetails" id="movieDetails"></div>
+    <div class="place" id="place">
+        <form class="placeMovie" id="placeMovie" action="#">
+            <label>quantity</label>
+            <input type="number" class="quantity" min="1" max="100">
+            <button type="submit">Place</button>
+        </form>
+    </div>
+</section>
+</body>
+</html>

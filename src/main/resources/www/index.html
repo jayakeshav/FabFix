@@ -2,9 +2,307 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>index</title>
+    <script src = "FunctionsRequired.js" type="text/javascript" defer="defer"></script>
+    <script src = "index.js" type="text/javascript" defer="defer"></script>
+    <script src = "index1.js" type="text/javascript" defer="defer"></script>
+    <script src = "LoginPage/login.js" type="text/javascript" defer="defer"></script>
+    <script src = "LoginPage/idm.js" type="text/javascript" defer="defer"></script>
+    <script src = "billing/cart.js" type="text/javascript" defer="defer"></script>
+    <script src = "Movies/Movie.js" type="text/javascript" defer="defer"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="index.css" type="text/css" rel="stylesheet">
+<!--    <link href="LoginPage/LoginPage.css" type="text/css" rel="stylesheet">-->
+<!--    <link href="LoginPage/Reg.css" type="text/css" rel="stylesheet">-->
 </head>
-<body>
+<body onload="checkCookie()">
 
+<section class="navigationBar" id="navBar">
+    <h1>FabFix</h1>
+    <p id="navtag">Online movie service.</p>
+    <nav>
+        <ul>
+            <li><a href="admin/admin.html">advance operations</a></li>
+            <li><a onclick="loadLoginPage()">Login</a></li>
+            <li><a onclick="loadMoviesPage()">Browse</a></li>
+            <li><a onclick="loadCartPage()">Cart</a></li>
+            <li><a onclick="transactionHistory()">Previous Orders</a></li>
+        </ul>
+    </nav>
+</section>
+<section class="bestMovies" id="bestMovies">
+    <p id="greeting">welcome to FabFix</p>
+</section>
+<div id="loginPage" class="loginPage" style="display: none">
+    <nav>
+        <ul class="x">
+            <li><a class="loginNav" id="loginNav">Login Page</a></li>
+            <li><a class="registerNav" id="registerNav">Register Page</a></li>
+        </ul>
+    </nav>
+    <div class="flex-container" id="parent" style="display: none">
+        <form id="login" class="login" action="#">
+            <header>fabfix login</header>
+            <div class="fields">
+                <input type="email" class="loginEmail" placeholder="enter email"><br>
+                <input type="password" class="loginPassword" placeholder="enter Password"><br>
+                <button type="submit" class="button btn">login</button><br><br>
+            </div>
+        </form>
+    </div>
+    <div class="flex-container" id="main" style="display: none">
+        <form id="reg" class="reg" action="#">
+            <header>Welcome new user</header>
+            <div class="fields">
+                <input class="regEmail" type="email" placeholder="enter email"><br>
+                <input class="regPass" type="password" placeholder="enter Password"><br>
+                <input class="regPass1" type="password" placeholder=" retype enter Password"><br>
+                <button type="submit" class="button btn">Register</button><br><br>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="moviesPage" class="moviesPage" style="display: none">
+    <nav>
+        <ul class="x">
+            <li><a href="#basicSearch">Basic Search</a></li>
+            <li><a href="#quickSearch">Quick Search</a></li>
+            <li><a href="#advanceSearch">Advance Search</a></li>
+        </ul>
+    </nav>
+    <section class="basic search" id="basicSearch">
+        <p class="baseP">basic search.</p>
+        <div class="basicSearchF" id="basicSearchF">
+            <form class="basicSearchForm" id="basicSearchForm" action="#">
+                <label>title</label>
+                <input type="text" class="title"/>
+                /
+                <label>genre</label>
+                <select class="genre">
+                    <option value="">all</option>
+                </select><br><br>
+                <label>sort by</label>
+                <select class="sortBy">
+                    <option value="rating">rating</option>
+                    <option value="title">title</option>
+                </select>
+                <label>order by</label>
+                <select class="orderBy">
+                    <option value="desc">descending</option>
+                    <option value="asc">ascending</option>
+                </select><br><br>
+                <label>No of movies per page</label>
+                <input type="number" class="numMovies">
+                <label>Page Number</label>
+                <input type="number" class="pageNum">
+                <br>
+                <button type="submit">Search</button>
+                <br>
+            </form>
+        </div>
+        <div class="basicSearchMovies" id ="basicSearchMovies"></div>
+    </section>
+    <section class="quick search" id="quickSearch">
+        <p class="baseP">quick search.</p>
+        <div class="quickSearchF" id="quickSearchF">
+            <form class="quickSearchForm" id="quickSearchForm" action="#">
+                <label>title</label>
+                <br>
+                <input type="text" class="titleQ"/><br><br>
+                <button type="submit">Search</button>
+            </form>
+        </div>
+        <div id="quickSearchMovies" class="quickSearchMovies"></div>
+    </section>
+    <section class="advance search" id="advanceSearch">
+        <p class="baseP">Advanced search.</p>
+        <div id="adv" class="adv">
+            <div class="baseQ" id="byDetails">By details</div>
+            <div class="advancesearchDiv" id="advanceSearchDiv" style="display: none">
+                <form class="advancedSearchForm" action="#">
+                    <label>title   </label><br>
+                    <input type="text" class="atitle"/><br>
+                    <label>director   </label><br>
+                    <input type="text" class="direct"/><br>
+                    <label>year   </label><br>
+                    <input type="text" class="ayear"/><br>
+                    <label>genre   </label><br>
+                    <select class="agenre">
+                        <option value="">all</option>
+                    </select><br><br>
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+            <br>
+            <div class="baseQ" id="byGenreM" >By Genre</div>
+            <div id="byGenre" class="byGenre" style="display: none;">
+                <form id="byGenreForm" class="byGenreForm" action="#">
+                    <label>genre</label><br>
+                    <select class="ggenre">
+                        <option value="">all</option>
+                    </select><br><br>
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+            <br>
+            <div class="baseQ" id="byL" >by letter</div>
+            <div id="byFirstLetter" class="byFirstLetter" style="display: none;">
+                <form id="byLetterForm" class="byLetterForm" action="#">
+                    <label>Letter   </label><br>
+                    <select name="letters" class="letters">
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="E">E</option>
+                        <option value="F">F</option>
+                        <option value="G">G</option>
+                        <option value="H">H</option>
+                        <option value="I">I</option>
+                        <option value="J">J</option>
+                        <option value="K">K</option>
+                        <option value="L">L</option>
+                        <option value="M">M</option>
+                        <option value="N">N</option>
+                        <option value="O">O</option>
+                        <option value="P">P</option>
+                        <option value="Q">Q</option>
+                        <option value="R">R</option>
+                        <option value="S">S</option>
+                        <option value="T">T</option>
+                        <option value="U">U</option>
+                        <option value="V">V</option>
+                        <option value="W">W</option>
+                        <option value="X">X</option>
+                        <option value="Y">Y</option>
+                        <option value="Z">Z</option>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                    </select><br><br>
+                    <button type="submit">search</button>
+                </form>
+            </div>
+            <br>
+        </div>
+        <div>
+            <div class="baseQ" id="optionsx" >options</div>
+            <div class="options" id="options" style="display: none">
+                <div id="options1">
+                    <label>sort by</label>
+                    <select class="asortBy">
+                        <option value="rating">rating</option>
+                        <option value="title">title</option>
+                    </select><br>
+                    <label> in </label>
+                    <select class="aorderBy">
+                        <option value="desc">descending</option>
+                        <option value="asc">ascending</option>
+                    </select>
+                </div>
+                <br>
+                <div id="options2">
+                    <label>No of movies per page</label>
+                    <input type="number" class="anumMovies" max="15" min="1">
+                    <label>Page Number</label>
+                    <input type="number" class="apageNum" min="1" max="20">
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <section id="searchResults" class="searchResults">
+        <div id="browseResults" class="browseResults"></div>
+    </section>
+</div>
+<div id="moviePage" class="moviePage" style="display: none">
+    <section class="movieDetailsSection" id="movieDetailsSection">
+        <h3 style="text-align: center;" id="movieTitle"></h3>
+        <div class="movieDetails" id="movieDetails"></div>
+        <div class="place" id="place">
+            <form class="placeMovie" id="placeMovie" action="#">
+                <label>quantity</label>
+                <input type="number" class="quantity" min="1" max="100">
+                <button type="submit">Place</button>
+            </form>
+        </div>
+    </section>
+</div>
+<div id="cartPage" class="cartPage" style="display: none">
+    <section class="content" id="content">
+        <div id="cart" class="cart">
+            <h4 align="center">Shopping Cart</h4>
+            <div id="cartLoad" class="cartLoad"></div>
+            <button onclick="placeOrder()">place order</button>
+        </div>
+        <div id="update" class="update" >
+            <form id="updateQuantity" class="updateQuantity">
+                New Quantity:
+                <input type="number" class="updateValue"><br>
+                <button type="submit" class="submitValue">update</button><br>
+            </form >
+            <button onclick="hideUpdate()">cancel</button>
+        </div>
+        <div id="details" class="details">
+            <h4 align="center">Checkout Page</h4>
+            <div id = "cc" class="cc">
+                <h3>Card Details</h3>
+                <form action="#" class="ccDetails" id="ccDetails">
+                    <label for="fname">First Name</label>
+                    <input type="text" id="fname" class="fname"><br>
+                    <label for="lname">Last Name</label>
+                    <input type="text" id="lname" class="lname"><br>
+                    <label for="ccnum">Credit card number</label>
+                    <input type="text" id="ccnum" class="cardnumber"><br>
+                    <div>
+                        <label for="mon">Exp Month</label>
+                        <select class="mon" id ="mon">
+                            <option value="01">jan</option><option value="02">feb</option><option value="03">mar</option><option value="04">apr</option>
+                            <option value="05">may</option><option value="06">june</option><option value="07">july</option><option value="08">aug</option>
+                            <option value="09">sept</option><option value="10">oct</option><option value="11">nov</option><option value="12">dec</option>
+                        </select>
+                        <label for="expyear">Exp Year</label>
+                        <select class="expyear" id="expyear">
+                            <option value="2019">2019</option><option value="2020">2020</option>
+                            <option value="2021">2021</option><option value="2022">2022</option>
+                            <option value="2023">2023</option><option value="2024">2024</option>
+                        </select>
+                    </div><br>
+                    <label for="cvv">CVV</label>
+                    <input type="text" id="cvv" class="cvv"><br>
+                    <button type="submit" class="btn">submit</button>
+                </form>
+                <button onclick="skipCC">skipCC</button>
+            </div>
+            <div id="customer" class="customer">
+                <h3>Customer Details</h3>
+                <form action="#" class="ccDetails" id="cDetails">
+                    <label for="cfname">First Name</label>
+                    <input type="text" id="cfname" class="cfname"><br>
+                    <label for="clname">Last Name</label>
+                    <input type="text" id="clname" class="clname"><br>
+                    <label for="address">Address</label>
+                    <input type="text" id="address" class="address"><br>
+                    <button type="submit" class="btn">submit</button><br>
+                </form>
+            </div>
+            <div id="customerDetails" class="customerDetails">
+            </div>
+        </div>
+    </section>
+</div>
+<div id="transactionPage" class="transactionPage" style="display: none">
+    <div id="orders" class="orders">
+        <h4 align="center">Transaction History</h4>
+        <div class="transactionHistory" id="transactionHistory"></div>
+    </div>
+</div>
 </body>
 </html>
