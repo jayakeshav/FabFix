@@ -280,6 +280,6 @@ function handleResultStar(res){
     var star = res["stars"];
     var text = '<h4 style="text-align: center">'+star["name"]+'</h4>';
     text+='<p><b>birth Year:</b>'+star["birthYear"]+'</p>';
-    text+='<p><b>movies list:</b> comming soon!!!</p>';
+    text+='<p><b>movies list:</b> coming soon!!!</p>';
     starDom.append(text);
 }
