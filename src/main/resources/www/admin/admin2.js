@@ -7,7 +7,7 @@ $(".starSearchForm").submit(function (event) {
 
     var name = $(".name").val();
     var movie = $(".movie").val();
-    var year = $(".year").val();
+    var year = $(".birthYear").val();
     var sortBy = $(".sortBy").val();
     var orderBy = $(".orderBy").val();
     var numMovies = $(".numMovies").val();
