@@ -90,6 +90,7 @@ function handleResultMovie(res){
     var movieName = jQuery("#movieTitle");
     movieName.append("Title:"+movie["title"]);
     var movieDetails = jQuery("#movieDetails");
+    jQuery(".movieDetails").empty();
     var genres = movie["genres"];
     var stars = movie["stars"];
 

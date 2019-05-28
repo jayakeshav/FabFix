@@ -662,10 +662,12 @@ function handlePayPalResult(res) {
         window.alert(res["message"]);
     }
     else if (resultCode == 3400 ){
-        window.alert("redirected to paypal");
+        window.alert("redirect to paypal");
         console.log(redirectURL);
         debugger;
-        window.location.href = redirectURL;
+        $(".paypalPlace").empty();
+        $(".paypalPlace").html('<a href="'+redirectURL+'" target="_blank">pay now</a>')
+        // window.location.href = redirectURL;
     }
     else{
         window.alert(res["message"]);

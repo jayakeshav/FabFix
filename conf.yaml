@@ -1,7 +1,7 @@
 serviceConfig:
   scheme: http://
   hostName: localhost
-  port: 2305
+  port: 2350
   path: /
 
 loggerConfig:

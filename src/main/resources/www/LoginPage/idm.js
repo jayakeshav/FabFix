@@ -32,7 +32,6 @@ $(".reg").submit(function (event){
     regEmail=inemail;
     if (inpassword!=inpassword2) {
         window.alert("passwords do not match");
-        redirectReg()
         }
     else {
         var object = '{"email":"'+inemail+'","password":"'+inpassword+'"}';

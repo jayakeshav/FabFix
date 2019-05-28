@@ -255,7 +255,7 @@ ul.x li a:hover{
     height: 800px;
 }
 .searchResults .browseResults{
-    padding-top: 20px;
+    padding-top: 100px;
 }
 #greeting{
     font-family: 'EB Garamond', serif;
@@ -270,4 +270,8 @@ ul.x li a:hover{
     width: 100%;
     padding-top: 300px;
     text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+}
+.movieDetailsSection{
+    padding-top: 80px;
+    background: #cccccc;
 }
