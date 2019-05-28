@@ -745,7 +745,7 @@ function handleResultA(res) {
     rowHTML += "</tbody></table><br>";
     rowHTML += "<button onclick='previousPageAdvance()' style='alignment: left'>previous</button>";
     rowHTML += "<button onclick='nextPageAdvance()' style='alignment: right'>next</button>";
-    rowHTML += "<p>Page Number:"+pageNumber+"</p>";
+    rowHTML += "<p>Page Number:"+advanceSearchPage+"</p>";
 
     //debugger;
     movieDom.append(rowHTML);
@@ -915,7 +915,6 @@ function previousPageAdvance() {
         add=add+"&sortby="+sortBy;
         add=add+"&direction="+orderBy;
 
-        advanceSearchPage=1;
 
         console.log(add);
         email=getEmail();
@@ -1071,7 +1070,6 @@ function nextPageAdvance() {
         add=add+"&sortby="+sortBy;
         add=add+"&direction="+orderBy;
 
-        advanceSearchPage=1;
 
         console.log(add);
         email=getEmail();
