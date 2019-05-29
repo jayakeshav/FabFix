@@ -123,7 +123,7 @@ function handleCart(res) {
                 "<td>"+totalPrice+"</td><td><a onclick='updateQuantity(\""+movieID+"\")'>updateQuantity</a> " +
                 "<a onclick='removeItemFromCart(\""+movieID+"\")'>remove</a></td></tr>";
         }
-        total=total.toFixed(2);
+        // total=total.toFixed(2);
         insert+="<tr>total price: <b>"+total+"</b></tr>";
         insert += "</table>";
         text.append(insert);
@@ -850,17 +850,16 @@ function printOrders(transactions) {
     for (var i=0; i<transactions.length;i++){
         var transaction = transactions[i];
         enter+="<li id='transaction' class='transaction'>";
-        enter+="<b>transaction id:<b></b>"+transaction["transactionId"]+"<br>";
+        enter+="<b>transaction id:</b>"+transaction["transactionId"]+"<br>";
         enter+="total:"+transaction["amount"]["total"]+" "+transaction["amount"]["currency"]+"<br>";
         enter+="transaction fee:"+transaction["transaction_fee"]["value"]+" "+transaction["transaction_fee"]["currency"]+"<br>";
         enter+="transaction time:"+transaction["update_time"]+"<br>";
-        enter+="movies:<br>";
+        enter+="<u>movies</u>:<br>";
         for (var j=0;j<transaction["items"].length;j++){
             var item = transaction["items"][j];
             var movieTitle = item["movieTitle"];
 
             enter+="<li id='items' class='items'>";
-            enter+="movie id:"+item["movieId"];
             if (movieTitle!=null){
                 if (movieTitle.length!=0){
                     enter+="movie Title:"+movieTitle+" "

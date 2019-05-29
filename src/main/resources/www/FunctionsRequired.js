@@ -109,6 +109,7 @@ function getToIndexPage() {
 
 function getHost() {
     return "http://andromeda-23.ics.uci.edu:2351/api/g";
+    // return "http://localhost:6243/api/g";
 }
 function deleteSessionA(){
     document.cookie = 'sessionID = "";expires = Thu, 01 Jan 1970 00:00:00 GMT;path=/';
