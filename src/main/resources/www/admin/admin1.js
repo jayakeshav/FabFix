@@ -97,7 +97,7 @@ $(".addMovieForm").submit(function (event) {
      if(res!=null){
          var resultCode = res["resultCode"];
          if (resultCode!=130){
-             deleteSession();
+             deleteSessionA();
          }
      }
      console.log(xhr.getResponseHeader("transactionID"));
@@ -180,7 +180,7 @@ $(".addMovieForm").submit(function (event) {
      if(res!=null){
          var resultCode = res["resultCode"];
          if (resultCode!=130){
-             deleteSession();
+             deleteSessionA();
          }
      }
      console.log(xhr.getResponseHeader("transactionID"));
@@ -279,7 +279,7 @@ $(".addMovieForm").submit(function (event) {
      if(res!=null){
          var resultCode = res["resultCode"];
          if (resultCode!=130){
-             deleteSession();
+             deleteSessionA();
          }
      }
      console.log(xhr.getResponseHeader("transactionID"));
@@ -370,7 +370,7 @@ function handleRedirectAddStarToMovie(res,textStatus,xhr) {
     if(res!=null){
         var resultCode = res["resultCode"];
         if (resultCode!=130){
-            deleteSession();
+            deleteSessionA();
         }
     }
     console.log(xhr.getResponseHeader("transactionID"));
@@ -455,7 +455,7 @@ function handleRedirectAddGenre(res,textStatus,xhr) {
     if(res!=null){
         var resultCode = res["resultCode"];
         if (resultCode!=130){
-            deleteSession();
+            deleteSessionA();
         }
     }
     console.log(xhr.getResponseHeader("transactionID"));
@@ -542,7 +542,7 @@ function handleRedirectAddCustomer(res,textStatus,xhr) {
     if(res!=null){
         var resultCode = res["resultCode"];
         if (resultCode!=130){
-            deleteSession();
+            deleteSessionA();
         }
     }
     console.log(xhr.getResponseHeader("transactionID"));
@@ -629,7 +629,7 @@ function handleRedirectUpdateCustomer(res,textStatus,xhr) {
     if(res!=null){
         var resultCode = res["resultCode"];
         if (resultCode!=130){
-            deleteSession();
+            deleteSessionA();
         }
     }
     console.log(xhr.getResponseHeader("transactionID"));
@@ -704,7 +704,7 @@ function handleRedirectCustomerView(res,textStatus,xhr) {
     if(res!=null){
         var resultCode = res["resultCode"];
         if (resultCode!=130){
-            deleteSession();
+            deleteSessionA();
         }
     }
     console.log(xhr.getResponseHeader("transactionID"));

@@ -51,7 +51,7 @@ function handleRedirectStars(res,textStatus,xhr) {
     if(res!=null){
         var resultCode = res["resultCode"];
         if (resultCode!=130){
-            deleteSession1();
+            deleteSessionA();
 
         }
     }
@@ -237,7 +237,7 @@ function handleRedirectStar(res,textStatus,xhr) {
     if(res!=null){
         var resultCode = res["resultCode"];
         if (resultCode!=130){
-            deleteSession();
+            deleteSessionA();
         }
     }
     console.log(xhr.getResponseHeader("transactionID"));
