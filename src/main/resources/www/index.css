@@ -275,3 +275,13 @@ ul.x li a:hover{
     padding-top: 80px;
     background: #cccccc;
 }
+
+li.transaction{
+    list-style-position: outside;
+    list-style-type: circle;
+}
+
+li.items {
+    list-style: outside;
+    list-style: square;
+}

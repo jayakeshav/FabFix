@@ -849,12 +849,11 @@ function printOrders(transactions) {
     }
     for (var i=0; i<transactions.length;i++){
         var transaction = transactions[i];
-        enter+="<li id='transaction' class='transaction'>";
-        enter+="<b>transaction id:</b>"+transaction["transactionId"]+"<br>";
-        enter+="total:"+transaction["amount"]["total"]+" "+transaction["amount"]["currency"]+"<br>";
-        enter+="transaction fee:"+transaction["transaction_fee"]["value"]+" "+transaction["transaction_fee"]["currency"]+"<br>";
-        enter+="transaction time:"+transaction["update_time"]+"<br>";
-        enter+="<u>movies</u>:<br>";
+        enter+="<b>Transaction id:</b>"+transaction["transactionId"]+"<br>";
+        enter+="Total:"+transaction["amount"]["total"]+" "+transaction["amount"]["currency"]+"<br>";
+        enter+="Transaction fee:"+transaction["transaction_fee"]["value"]+" "+transaction["transaction_fee"]["currency"]+"<br>";
+        enter+="Transaction time:"+transaction["update_time"]+"<br>";
+        enter+="<u>Movies</u>:<br>";
         for (var j=0;j<transaction["items"].length;j++){
             var item = transaction["items"][j];
             var movieTitle = item["movieTitle"];
@@ -862,12 +861,12 @@ function printOrders(transactions) {
             enter+="<li id='items' class='items'>";
             if (movieTitle!=null){
                 if (movieTitle.length!=0){
-                    enter+="movie Title:"+movieTitle+" "
+                    enter+="<b>Movie Title</b>:"+movieTitle+" "
                 }
             }
-            enter+=" quantity:"+item["quantity"]+" unitPrice:"+item["unit_price"]*item["discount"]+"</li>";
+            enter+=" <b>Quantity</b>:"+item["quantity"]+"</li>";
         }
-        enter+="</li><br>";
+        enter+="<br>";
     }
     div.append(enter);
 }
