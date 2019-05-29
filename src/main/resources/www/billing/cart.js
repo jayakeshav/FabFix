@@ -99,7 +99,7 @@ function handleCart(res) {
     var text = jQuery("#cartLoad");
     text.empty();
     if (resultCode==312){
-        text.append(message);
+        text.append("cart is empty");
         empty  =true;
     }else {
         console.log(cart);
@@ -219,6 +219,8 @@ function placeOrder(){
     hideall();
     showDetails();
     checkout();
+    showOrders();
+    showcart();
 }
 function hideall() {
     hidecart();
@@ -361,9 +363,7 @@ function handleUpdate(res) {
 }
 
 function skipCC() {
-    hideCC();
-    showCustomer();
-    updateCustomer();
+    window.alert("you cant skip sorry")
 }
 var ccId="";
 function updateCC() {
