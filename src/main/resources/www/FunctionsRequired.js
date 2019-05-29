@@ -125,7 +125,6 @@ var images = [
 
 var imageHead = document.getElementById("bestMovies");
 var imageLogin = document.getElementById("loginPage");
-imageHead.style.background = "";
 setInterval(function() {
     console.log(images[c]);
     imageHead.style.backgroundImage = "url("+images[c]+")";
