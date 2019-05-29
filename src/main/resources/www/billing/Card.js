@@ -2,16 +2,16 @@ $(".payment").submit(function (event) {
         console.log("hit");
         event.preventDefault(); // Prevent the default form submit event, using ajax instead
 
-        let fname = $(".fname").val();
-        let lname = $(".lname").val();
-        let ccnum = $(".cardnumber").val();
-        let expm = $(".mon").val();
-        let expy = $(".expyear").val();
-        let cvv = $(".cvv").val();
+        var fname = $(".fname").val();
+        var lname = $(".lname").val();
+        var ccnum = $(".cardnumber").val();
+        var expm = $(".mon").val();
+        var expy = $(".expyear").val();
+        var cvv = $(".cvv").val();
 
-        let cc = ccnum+""+cvv;
-        let exp = "01-"+expm+"-"+expy;
-        let text = '{'+
+        var cc = ccnum+""+cvv;
+        var exp = "01-"+expm+"-"+expy;
+        var text = '{'+
             '"id": "'+cc+'",' +
             '"firstName": "'+fname+'",' +
             '"lastName": "'+lname+'",' +

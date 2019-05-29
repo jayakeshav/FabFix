@@ -117,12 +117,85 @@ function handleCart(res) {
             total+=totalPrice;
             insert+="<tr><td>"+movieTitle+"</td><td>"+quantity+"</td><td>" +
                 "<del>"+unitPrice+"</del> "+actualPrice+"</td>" +
-                "<td>"+totalPrice+"</td><td><a onclick='updateQuantity(\""+movieID+"\")'>updateQuantity</a></td></tr>";
+                "<td>"+totalPrice+"</td><td><a onclick='updateQuantity(\""+movieID+"\")'>updateQuantity</a> " +
+                "<a onclick='removeItemFromCart(\""+movieID+"\")'>remove</a></td></tr>";
         }
         insert+="<tr>total price: <b>"+total+"</b></tr>";
         insert += "</table>";
         text.append(insert);
     }
+}
+function removeItemFromCart(movieID) {
+    console.log("removing :"+movieID);
+    var text = '{ ' +
+        '   "email": "'+email+'",' +
+        '   "movieId": "'+movieID+'"' +
+        '}';
+    var url1 = getHost()+"/billing/cart/delete";
+    console.log(text);
+    sessionID=getSessionID();
+    $.ajax({
+        method:"POST",
+        url: url1,
+        contentType: "application/json",
+        dataType: "json",
+        data: text,
+        headers : {
+            "email":email,
+            "sessionID":sessionID,
+            "Access-Control-Allow-Origin":"*",
+            "Access-Control-Allow-Headers":"*",
+            "Access-Control-Expose-Headers":"*"
+        },
+        success:handleRedirectRemoveFromCart
+    });
+}
+function handleRedirectRemoveFromCart(res,textStatus,xhr) {
+    debugger;
+    if(res!=null){
+        var resultCode = res["resultCode"];
+        if (resultCode!=130){
+            deleteSession();
+        }
+    }
+    console.log(xhr.getResponseHeader("transactionID"));
+    var transactionID = xhr.getResponseHeader("transactionID");
+    var delay = xhr.getResponseHeader("delay");
+    var sessionID = xhr.getResponseHeader("sessionID");
+    if (sessionID!=null) {
+        setSessionID(sessionID);
+    }
+
+    wait(500);
+    $.ajax({
+        method:"GET",
+        url: getHost()+"/report",
+        headers:{
+            email:email,
+            transactionID:transactionID
+        },
+        success:handleRemove
+    });
+}
+function handleRemove(res,textstatus,xhr) {
+    console.log(xhr.status);
+    if (xhr.status==204){
+        if (i==20){
+            i=0;
+            window.alert("something went wrong");
+            document.location.href = "../index.html"
+        }
+        i++;
+        wait(500);
+        handleRedirectRemoveFromCart(res,textstatus,xhr);
+    }
+    else {
+        handleRemoveResult(res);
+    }
+}
+function handleRemoveResult(res) {
+    var resultCode = res["resultCode"];
+    window.alert(res["message"]);
 }
 
 function wait(ms){
@@ -773,15 +846,23 @@ function printOrders(transactions) {
     for (var i=0; i<transactions.length;i++){
         var transaction = transactions[i];
         enter+="<li id='transaction' class='transaction'>";
-        enter+="transaction id:"+transaction["transactionId"]+"<br>";
+        enter+="<b>transaction id:<b></b>"+transaction["transactionId"]+"<br>";
         enter+="total:"+transaction["amount"]["total"]+" "+transaction["amount"]["currency"]+"<br>";
-        enter+="transaction fee:"+transaction["transaction_fee"]["value"]+" "+transaction["transaction_fee"]["currency"]+"<br>"
+        enter+="transaction fee:"+transaction["transaction_fee"]["value"]+" "+transaction["transaction_fee"]["currency"]+"<br>";
         enter+="transaction time:"+transaction["update_time"]+"<br>";
         enter+="movies:<br>";
         for (var j=0;j<transaction["items"].length;j++){
             var item = transaction["items"][j];
+            var movieTitle = item["movieName"];
+
             enter+="<li id='items' class='items'>";
-            enter+="movie id:"+item["movieId"]+" quantity:"+item["quantity"]+" unitPrice:"+item["unit_price"]*item["discount"]+"</li>";
+            enter+="movie id:"+item["movieId"];
+            if (movieTitle!=null){
+                if (movieTitle.length!=0){
+                    enter+="movie Title:"+movieTitle+" "
+                }
+            }
+            enter+=" quantity:"+item["quantity"]+" unitPrice:"+item["unit_price"]*item["discount"]+"</li>";
         }
         enter+="</li><br>";
     }
