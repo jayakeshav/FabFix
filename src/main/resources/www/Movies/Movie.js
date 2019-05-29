@@ -114,6 +114,12 @@ function handleResultMovie(res){
     }
     details+="<h5>"+"Stars:</h5><p>"+starString+"</p><br>";
     details+="<h5>"+"Genres:</h5><p>"+genresString+"</p><br>";
+    var hidden = movie["hidden"];
+    if (hidden!=null){
+        if (hidden.length!=0){
+            details+="<h5>Hidden:</h5>"+hidden;
+        }
+    }
     movieDetails.append(details);
 }
 
