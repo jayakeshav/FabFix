@@ -105,7 +105,7 @@ function handleCart(res) {
         console.log(cart);
         insert+="<table class='cart' id='cart' >";
         insert+="<tr><th>Movie</th><th>quantity</th><th>price per unit</th><th>price</th><th>Update Quantity</th></tr>";
-        var total=0;
+        var total=0.0;
         for(var i=0;i<cart.length;i++){
             var movieID = cart[i]["movieId"];
             var movieTitle = cart[i]["title"];
@@ -114,16 +114,16 @@ function handleCart(res) {
             var discount = cart[i]["discount"];
             var actualPrice = unitPrice*discount;
             var totalPrice = quantity*actualPrice;
+            total+=totalPrice;
             unitPrice = unitPrice.toFixed(2);
             actualPrice =  actualPrice.toFixed(2);
             totalPrice = totalPrice.toFixed(2);
-            total+=totalPrice;
             insert+="<tr><td>"+movieTitle+"</td><td>"+quantity+"</td><td>" +
                 "<del>"+unitPrice+"</del> "+actualPrice+"</td>" +
                 "<td>"+totalPrice+"</td><td><a onclick='updateQuantity(\""+movieID+"\")'>updateQuantity</a> " +
                 "<a onclick='removeItemFromCart(\""+movieID+"\")'>remove</a></td></tr>";
         }
-        // total=total.toFixed(2);
+        total=total.toFixed(2);
         insert+="<tr>total price: <b>"+total+"</b></tr>";
         insert += "</table>";
         text.append(insert);

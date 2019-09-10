@@ -88,6 +88,7 @@ function handleResultMovie(res){
     hideMovies();
     jQuery(".moviePage").show();
     var movieName = jQuery("#movieTitle");
+    movieName.empty();
     movieName.append("Title:"+movie["title"]);
     var movieDetails = jQuery("#movieDetails");
     jQuery(".movieDetails").empty();
